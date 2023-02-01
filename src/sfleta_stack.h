@@ -7,7 +7,7 @@
 
 #include "LSQContainer.h"
 
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 class Stack : public LSQContainer<T> {
  public:
@@ -21,6 +21,6 @@ class Stack : public LSQContainer<T> {
 
   const_reference top();
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "sfleta_stack.cpp"
 #endif  // SRC_sfleta_STACK_H_

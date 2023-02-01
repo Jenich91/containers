@@ -1,7 +1,7 @@
 #include <fstream>
 #include <string>
 #include <iostream>
-namespace s21 {
+namespace sfleta_ {
 
 template <typename K, typename T>
 Tree<K, T>::Tree(const std::initializer_list<K> &items) : Tree() {
@@ -563,4 +563,4 @@ Tree<K, T>& Tree<K, T>::operator=(Tree<K, T>&& other) {
     return *this;
 }
 
-}  // namespace s21
+}  // namespace sfleta_

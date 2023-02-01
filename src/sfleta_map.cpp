@@ -1,5 +1,5 @@
 
-namespace s21 {
+namespace sfleta_ {
 
 template <typename K, typename T>
 std::pair<typename Tree<K, T>::Iterator, bool> Map<K, T>::insert(const K& key, const T& obj) {
@@ -91,4 +91,4 @@ void Map<K, T>::merge(Map<K, T>& other) {
         if (insert(value.first, value.second).second) other.erase(other.find(value.first));
     }
 }
-}  // namespace s21
+}  // namespace sfleta_

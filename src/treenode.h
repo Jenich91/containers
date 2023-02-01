@@ -1,7 +1,7 @@
 #ifndef SRC_TREENODE_H_
 #define SRC_TREENODE_H_
 #include <stddef.h>
-namespace s21 {
+namespace sfleta_ {
 enum node_colors { kRed, kBlack };
 template <typename K, typename T>
 class TreeNode {
@@ -32,6 +32,6 @@ class TreeNode {
     TreeNode<K, T>* FindNillFromMinimal();
     TreeNode<K, T>* left_or_rigth() const;
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "treenode.cpp"
 #endif  // SRC_TREENODE_H_

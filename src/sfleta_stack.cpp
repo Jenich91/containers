@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 
 template <typename T>
 typename Stack<T>::const_reference Stack<T>::top() {
@@ -6,4 +6,4 @@ typename Stack<T>::const_reference Stack<T>::top() {
                      : throw std::logic_error("Stack is empty");
 }
 
-}  // namespace s21
+}  // namespace sfleta_

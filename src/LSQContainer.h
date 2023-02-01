@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include "Node.h"
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 class LSQContainer : public Node<T> {
  protected:
@@ -31,6 +31,6 @@ class LSQContainer : public Node<T> {
   void print() const;
   void pop();
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "LSQContainer.inl"
 #endif  // SRC_LSQCONTAINER_H_

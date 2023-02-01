@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <cmath>
 
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 class VA_Container {
  public:
@@ -34,6 +34,6 @@ class VA_Container {
     virtual size_type size() const { return size_; }
     virtual size_type max_size() { return std::numeric_limits<size_type>::max() / 2 / sizeof(value_type); }
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "sfleta_VA_Container.cpp"
 #endif  // SRC_sfleta_VA_CONTAINER_H_

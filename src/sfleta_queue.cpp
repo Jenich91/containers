@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 typename Queue<T>::const_reference Queue<T>::front() {
   return this->head_->data_;
@@ -17,4 +17,4 @@ void Queue<T>::pop() {
   }
 }
 
-}  // namespace s21
+}  // namespace sfleta_

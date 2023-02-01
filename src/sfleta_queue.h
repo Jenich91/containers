@@ -7,7 +7,7 @@
 
 #include "sfleta_stack.h"
 
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 class Queue : public LSQContainer<T> {
  public:
@@ -23,6 +23,6 @@ class Queue : public LSQContainer<T> {
   const_reference front();
   const_reference back() { return LSQContainer<T>::tail_->data_; }
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "sfleta_queue.cpp"
 #endif  // SRC_sfleta_QUEUE_H_

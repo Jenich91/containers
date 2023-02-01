@@ -1,7 +1,7 @@
 #ifndef SRC_sfleta_VECTOR_H_
 #define SRC_sfleta_VECTOR_H_
 #include "sfleta_VA_Container.h"
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 class vector : public VA_Container<T> {
  public:
@@ -43,6 +43,6 @@ class vector : public VA_Container<T> {
     template <typename... Args>
     void emplace_back(Args&&... args);
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "sfleta_vector.cpp"
 #endif  // SRC_sfleta_VECTOR_H_

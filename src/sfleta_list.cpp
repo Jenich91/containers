@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 typename list<T>::reference list<T>::iterator::operator*() {
   if (pNode_ == nullptr)
@@ -521,4 +521,4 @@ void list<T>::print() {
   }
 }
 
-}  // namespace s21
+}  // namespace sfleta_

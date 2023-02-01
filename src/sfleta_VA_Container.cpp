@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 template<typename T>
 typename VA_Container<T>::reference VA_Container<T>::at(size_type pos) const {
     if (pos >= size_) {
@@ -47,4 +47,4 @@ template<typename T>
 bool VA_Container<T>::empty() {
     return size_ == 0;
 }
-}  // namespace s21
+}  // namespace sfleta_

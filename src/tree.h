@@ -6,7 +6,7 @@
 #include <exception>
 
 #include "treenode.h"
-namespace s21 {
+namespace sfleta_ {
 template <typename K, typename T>
 class Tree {
  protected:
@@ -76,6 +76,6 @@ class Tree {
     Iterator FindPlace(const K& value);
 };
 
-}  // namespace s21
+}  // namespace sfleta_
 #include "tree.cpp"
 #endif  // SRC_TREE_H_

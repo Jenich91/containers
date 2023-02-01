@@ -1,6 +1,6 @@
 #ifndef SRC_NODE_H_
 #define SRC_NODE_H_
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 class Node {
  public:
@@ -10,5 +10,5 @@ class Node {
   Node(): data_(), pNext_(nullptr), pPrev_(nullptr) {}
   explicit Node(const T &data) : Node() {data_ = data;}
 };
-}  // namespace s21
+}  // namespace sfleta_
 #endif  // SRC_NODE_H_

@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 template <typename K>
 std::pair<typename set<K>::iterator, bool> set<K>::insert(const K& value) {
     std::pair<set<K>::iterator, bool> res;
@@ -21,4 +21,4 @@ vector<std::pair<typename set<K>::iterator, bool>> set<K>::emplace(Args&&... arg
     }
     return vec;
 }
-}  // namespace s21
+}  // namespace sfleta_

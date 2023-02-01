@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 template<typename T, size_t N>
 array<T, N>::array() {
     this->buffer_ = new T[N]{};
@@ -97,4 +97,4 @@ typename array<T, N>::iterator array<T, N>::end() {
     }
     return (this->data() + N);
 }
-}  // namespace s21
+}  // namespace sfleta_

@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 vector<T>::vector() {
     this->buffer_ = new T[1]{};
@@ -194,4 +194,4 @@ template <typename... Args>
 void vector<T>::emplace_back(Args&&... args) {
     emplace(this->buffer_ + this->size_, args...);
 }
-}  // namespace s21
+}  // namespace sfleta_

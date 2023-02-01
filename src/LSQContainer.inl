@@ -1,5 +1,5 @@
 
-namespace s21 {
+namespace sfleta_ {
 
 template <typename T>
 LSQContainer<T>::LSQContainer() : size_(0), head_(nullptr), tail_(nullptr) {}
@@ -103,4 +103,4 @@ bool LSQContainer<T>::empty() {
   return size_ == 0;
 }
 
-}  // namespace s21
+}  // namespace sfleta_

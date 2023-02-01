@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 
 template <typename K, typename T>
 TreeNode<K, T>* TreeNode<K, T>::NextNode() {
@@ -77,4 +77,4 @@ TreeNode<K, T>* TreeNode<K, T>::left_or_rigth() const {
   return p_left_ ? p_left_ : p_right_;
 }
 
-}  // namespace s21
+}  // namespace sfleta_

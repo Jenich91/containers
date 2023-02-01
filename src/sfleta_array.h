@@ -1,7 +1,7 @@
 #ifndef SRC_sfleta_ARRAY_H_
 #define SRC_sfleta_ARRAY_H_
 #include "sfleta_VA_Container.h"
-namespace s21 {
+namespace sfleta_ {
 template <typename T, size_t N>
 class array : public VA_Container<T> {
  public:
@@ -32,6 +32,6 @@ class array : public VA_Container<T> {
     size_type max_size() override { return N; }
     size_type size() const override { return N; }
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "sfleta_array.cpp"
 #endif  // SRC_sfleta_ARRAY_H_

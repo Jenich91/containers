@@ -4,7 +4,7 @@
 #include <limits>
 
 #include "LSQContainer.h"
-namespace s21 {
+namespace sfleta_ {
 template <typename T>
 class list : public LSQContainer<T> {
  public:
@@ -93,6 +93,6 @@ class list : public LSQContainer<T> {
 
   void print();
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "sfleta_list.cpp"
 #endif  // SRC_sfleta_LIST_H_

@@ -5,7 +5,7 @@
 // #include <vector>
 #include "sfleta_vector.h"
 
-namespace s21 {
+namespace sfleta_ {
 template <typename K, typename T>
 class Map : public Tree<K, T> {
  public:
@@ -38,7 +38,7 @@ class Map : public Tree<K, T> {
     T& operator[](const K& key);
     T& at(const K& key);
 };
-}  // namespace s21
+}  // namespace sfleta_
 
 #include "sfleta_map.cpp"
 #endif  //  SRC_sfleta_MAP_H_

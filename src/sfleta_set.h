@@ -2,7 +2,7 @@
 #define SRC_sfleta_SET_H_
 #include "tree.h"
 #include "sfleta_vector.h"
-namespace s21 {
+namespace sfleta_ {
 template <typename K>
 class set {
  public:
@@ -44,6 +44,6 @@ class set {
     iterator find(const_reference key) {return set_->find(key);}
     bool contains(const_reference key) {return set_->contains(key);}
 };
-}  // namespace s21
+}  // namespace sfleta_
 #include "sfleta_set.cpp"
 #endif  // SRC_sfleta_SET_H_

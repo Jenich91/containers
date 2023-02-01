@@ -1,4 +1,4 @@
-namespace s21 {
+namespace sfleta_ {
 template <typename K>
 size_t multiset<K>::count(const K& key) {
     size_type result = 0;
@@ -47,4 +47,4 @@ vector<typename multiset<K>::iterator> multiset<K>::emplace(Args&&... args) {
     }
     return vec;
 }
-}  // namespace s21
+}  // namespace sfleta_
