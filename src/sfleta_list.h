@@ -1,5 +1,5 @@
-#ifndef SRC_S21_LIST_H_
-#define SRC_S21_LIST_H_
+#ifndef SRC_sfleta_LIST_H_
+#define SRC_sfleta_LIST_H_
 #include <exception>
 #include <limits>
 
@@ -94,5 +94,5 @@ class list : public LSQContainer<T> {
   void print();
 };
 }  // namespace s21
-#include "s21_list.cpp"
-#endif  // SRC_S21_LIST_H_
+#include "sfleta_list.cpp"
+#endif  // SRC_sfleta_LIST_H_

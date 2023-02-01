@@ -1,11 +1,11 @@
-#ifndef SRC_S21_QUEUE_H_
-#define SRC_S21_QUEUE_H_
+#ifndef SRC_sfleta_QUEUE_H_
+#define SRC_sfleta_QUEUE_H_
 #include <stddef.h>
 
 #include <initializer_list>
 #include <iostream>
 
-#include "s21_stack.h"
+#include "sfleta_stack.h"
 
 namespace s21 {
 template <typename T>
@@ -24,5 +24,5 @@ class Queue : public LSQContainer<T> {
   const_reference back() { return LSQContainer<T>::tail_->data_; }
 };
 }  // namespace s21
-#include "s21_queue.cpp"
-#endif  // SRC_S21_QUEUE_H_
+#include "sfleta_queue.cpp"
+#endif  // SRC_sfleta_QUEUE_H_

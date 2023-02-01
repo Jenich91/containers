@@ -1,9 +1,9 @@
-#ifndef SRC_S21_MAP_H_
-#define SRC_S21_MAP_H_
+#ifndef SRC_sfleta_MAP_H_
+#define SRC_sfleta_MAP_H_
 
 #include "tree.h"
 // #include <vector>
-#include "s21_vector.h"
+#include "sfleta_vector.h"
 
 namespace s21 {
 template <typename K, typename T>
@@ -40,5 +40,5 @@ class Map : public Tree<K, T> {
 };
 }  // namespace s21
 
-#include "s21_map.cpp"
-#endif  //  SRC_S21_MAP_H_
+#include "sfleta_map.cpp"
+#endif  //  SRC_sfleta_MAP_H_

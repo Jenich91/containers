@@ -1,7 +1,7 @@
-#ifndef SRC_S21_SET_H_
-#define SRC_S21_SET_H_
+#ifndef SRC_sfleta_SET_H_
+#define SRC_sfleta_SET_H_
 #include "tree.h"
-#include "s21_vector.h"
+#include "sfleta_vector.h"
 namespace s21 {
 template <typename K>
 class set {
@@ -45,5 +45,5 @@ class set {
     bool contains(const_reference key) {return set_->contains(key);}
 };
 }  // namespace s21
-#include "s21_set.cpp"
-#endif  // SRC_S21_SET_H_
+#include "sfleta_set.cpp"
+#endif  // SRC_sfleta_SET_H_

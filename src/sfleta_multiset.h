@@ -1,6 +1,6 @@
-#ifndef SRC_S21_MULTISET_H_
-#define SRC_S21_MULTISET_H_
-#include "s21_set.h"
+#ifndef SRC_sfleta_MULTISET_H_
+#define SRC_sfleta_MULTISET_H_
+#include "sfleta_set.h"
 namespace s21 {
 template <typename K>
 
@@ -32,5 +32,5 @@ class multiset : public set<K> {
     iterator upper_bound(const_reference key);
 };
 }  // namespace s21
-#include "s21_multiset.cpp"
-#endif  // SRC_S21_MULTISET_H_
+#include "sfleta_multiset.cpp"
+#endif  // SRC_sfleta_MULTISET_H_

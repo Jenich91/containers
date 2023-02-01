@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "s21_containers.h"
-#include "s21_containersplus.h"
+#include "sfleta_containers.h"
+#include "sfleta_containersplus.h"
 
 #include <array>
 #include <string>
@@ -36,22 +36,22 @@ bool eq_set(const s21::set<K>& s1, const std::set<K>& s2) {
 }
 
 template <typename T>
-bool lists_eq(const s21::list<T> &s21_l, const std::list<T> &std_l) {
+bool lists_eq(const s21::list<T> &sfleta_l, const std::list<T> &std_l) {
   bool res = true;
-  if (s21_l.empty() != std_l.empty() && s21_l.size() != std_l.size()) {
+  if (sfleta_l.empty() != std_l.empty() && sfleta_l.size() != std_l.size()) {
     res = false;
   }
-  if (res && !s21_l.empty()) {
-    if (s21_l.front() != std_l.front() && s21_l.back() != std_l.back()) {
+  if (res && !sfleta_l.empty()) {
+    if (sfleta_l.front() != std_l.front() && sfleta_l.back() != std_l.back()) {
       res = false;
     }
 
-    typename s21::list<T>::iterator s21_it = s21_l.cbegin();
+    typename s21::list<T>::iterator sfleta_it = sfleta_l.cbegin();
     typename std::list<T>::const_iterator std_it = std_l.cbegin();
 
-    while (res && s21_it != s21_l.cend()) {
-      res = *s21_it == *std_it;
-      ++s21_it;
+    while (res && sfleta_it != sfleta_l.cend()) {
+      res = *sfleta_it == *std_it;
+      ++sfleta_it;
       ++std_it;
     }
   }
@@ -828,944 +828,944 @@ TEST(array_modifiers, fill) {
 // list test
 
 TEST(list_ConstructorsTests, costr_default) {
-  s21::list<int> s21_l1;
-  ASSERT_EQ(s21_l1.size(), 0);
+  s21::list<int> sfleta_l1;
+  ASSERT_EQ(sfleta_l1.size(), 0);
 
-  s21::list<double> s21_l2;
-  ASSERT_EQ(s21_l2.empty(), true);
+  s21::list<double> sfleta_l2;
+  ASSERT_EQ(sfleta_l2.empty(), true);
 
-  s21::list<char> s21_l3;
-  ASSERT_EQ(s21_l3.empty(), true);
+  s21::list<char> sfleta_l3;
+  ASSERT_EQ(sfleta_l3.empty(), true);
 
-  s21::list<std::string> s21_l4;
-  ASSERT_EQ(s21_l4.empty(), true);
+  s21::list<std::string> sfleta_l4;
+  ASSERT_EQ(sfleta_l4.empty(), true);
 }
 
 TEST(list_ConstructorsTests, costr_parameterized) {
-  s21::list<int> s21_l1(5);
-  ASSERT_EQ(s21_l1.size(), 5);
+  s21::list<int> sfleta_l1(5);
+  ASSERT_EQ(sfleta_l1.size(), 5);
 
-  s21::list<double> s21_l2(5);
-  ASSERT_EQ(s21_l2.size(), 5);
+  s21::list<double> sfleta_l2(5);
+  ASSERT_EQ(sfleta_l2.size(), 5);
 
-  s21::list<char> s21_l3(5);
-  ASSERT_EQ(s21_l3.size(), 5);
+  s21::list<char> sfleta_l3(5);
+  ASSERT_EQ(sfleta_l3.size(), 5);
 
-  s21::list<char> s21_l4(5);
-  ASSERT_EQ(s21_l4.size(), 5);
+  s21::list<char> sfleta_l4(5);
+  ASSERT_EQ(sfleta_l4.size(), 5);
 }
 
 TEST(list_ConstructorsTests, costr_initializer) {
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3{'1', '2', '3', '4'};
-  s21::list<char> s21_l3{'1', '2', '3', '4'};
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  s21::list<char> sfleta_l3{'1', '2', '3', '4'};
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ConstructorsTests, costr_copy) {
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  s21::list<int> s21_cl1(s21_l1);
-  ASSERT_TRUE(lists_eq(s21_cl1, std_l1));
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  s21::list<int> sfleta_cl1(sfleta_l1);
+  ASSERT_TRUE(lists_eq(sfleta_cl1, std_l1));
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_cl2(s21_l2);
-  ASSERT_TRUE(lists_eq(s21_cl2, std_l2));
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double> sfleta_cl2(sfleta_l2);
+  ASSERT_TRUE(lists_eq(sfleta_cl2, std_l2));
 
   std::list<char> std_l3{'1', '2', '3', '4'};
-  s21::list<char> s21_l3{'1', '2', '3', '4'};
-  s21::list<char> s21_cl3(s21_l3);
-  ASSERT_TRUE(lists_eq(s21_cl3, std_l3));
+  s21::list<char> sfleta_l3{'1', '2', '3', '4'};
+  s21::list<char> sfleta_cl3(sfleta_l3);
+  ASSERT_TRUE(lists_eq(sfleta_cl3, std_l3));
 
   std::list<std::string> std_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_cl4(s21_l4);
-  ASSERT_TRUE(lists_eq(s21_cl4, std_l4));
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
+  s21::list<std::string> sfleta_cl4(sfleta_l4);
+  ASSERT_TRUE(lists_eq(sfleta_cl4, std_l4));
 }
 
 TEST(list_ConstructorsTests, costr_move) {
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  s21::list<int> s21_ml1(std::move(s21_l1));
-  ASSERT_TRUE(lists_eq(s21_ml1, std_l1));
-  ASSERT_EQ(s21_l1.size(), 0);
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  s21::list<int> sfleta_ml1(std::move(sfleta_l1));
+  ASSERT_TRUE(lists_eq(sfleta_ml1, std_l1));
+  ASSERT_EQ(sfleta_l1.size(), 0);
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_ml2(std::move(s21_l2));
-  ASSERT_TRUE(lists_eq(s21_ml2, std_l2));
-  ASSERT_EQ(s21_l2.size(), 0);
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double> sfleta_ml2(std::move(sfleta_l2));
+  ASSERT_TRUE(lists_eq(sfleta_ml2, std_l2));
+  ASSERT_EQ(sfleta_l2.size(), 0);
 
   std::list<char> std_l3{'1', '2', '3', '4'};
-  s21::list<char> s21_l3{'1', '2', '3', '4'};
-  s21::list<char> s21_ml3(std::move(s21_l3));
-  ASSERT_TRUE(lists_eq(s21_ml3, std_l3));
-  ASSERT_EQ(s21_l3.size(), 0);
+  s21::list<char> sfleta_l3{'1', '2', '3', '4'};
+  s21::list<char> sfleta_ml3(std::move(sfleta_l3));
+  ASSERT_TRUE(lists_eq(sfleta_ml3, std_l3));
+  ASSERT_EQ(sfleta_l3.size(), 0);
 
   std::list<std::string> std_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_ml4(std::move(s21_l4));
-  ASSERT_TRUE(lists_eq(s21_ml4, std_l4));
-  ASSERT_EQ(s21_l3.size(), 0);
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
+  s21::list<std::string> sfleta_ml4(std::move(sfleta_l4));
+  ASSERT_TRUE(lists_eq(sfleta_ml4, std_l4));
+  ASSERT_EQ(sfleta_l3.size(), 0);
 }
 
 TEST(list_ElementAccessTests, front) {
-  s21::list<int> s21_l0;
-  s21::list<int>::const_reference f0 = s21_l0.front();
+  s21::list<int> sfleta_l0;
+  s21::list<int>::const_reference f0 = sfleta_l0.front();
   ASSERT_EQ(f0, 0);
 
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  s21::list<int>::const_reference f1 = s21_l1.front();
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  s21::list<int>::const_reference f1 = sfleta_l1.front();
   ASSERT_EQ(f1, 1);
 
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double>::const_reference f2 = s21_l2.front();
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double>::const_reference f2 = sfleta_l2.front();
   ASSERT_EQ(f2, 1.1);
 
-  s21::list<char> s21_l3{'1', '2', '3', '4'};
-  s21::list<char>::const_reference f3 = s21_l3.front();
+  s21::list<char> sfleta_l3{'1', '2', '3', '4'};
+  s21::list<char>::const_reference f3 = sfleta_l3.front();
   ASSERT_EQ(f3, '1');
 
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
-  s21::list<std::string>::const_reference f4 = s21_l4.front();
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
+  s21::list<std::string>::const_reference f4 = sfleta_l4.front();
   ASSERT_EQ(f4, "one");
 }
 
 TEST(list_ElementAccessTests, back) {
-  s21::list<int> s21_l0;
-  s21::list<int>::const_reference f0 = s21_l0.back();
+  s21::list<int> sfleta_l0;
+  s21::list<int>::const_reference f0 = sfleta_l0.back();
   ASSERT_EQ(f0, 0);
 
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  s21::list<int>::const_reference f1 = s21_l1.back();
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  s21::list<int>::const_reference f1 = sfleta_l1.back();
   ASSERT_EQ(f1, 4);
 
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double>::const_reference f2 = s21_l2.back();
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double>::const_reference f2 = sfleta_l2.back();
   ASSERT_EQ(f2, 4.4);
 
-  s21::list<char> s21_l3{'1', '2', '3', '4'};
-  s21::list<char>::const_reference f3 = s21_l3.back();
+  s21::list<char> sfleta_l3{'1', '2', '3', '4'};
+  s21::list<char>::const_reference f3 = sfleta_l3.back();
   ASSERT_EQ(f3, '4');
 
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
-  s21::list<std::string>::const_reference f4 = s21_l4.back();
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
+  s21::list<std::string>::const_reference f4 = sfleta_l4.back();
   ASSERT_EQ(f4, "four");
 }
 
 TEST(list_CapacityTests, size) {
-  s21::list<int> s21_l0;
-  ASSERT_EQ(s21_l0.size(), 0);
+  s21::list<int> sfleta_l0;
+  ASSERT_EQ(sfleta_l0.size(), 0);
 
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  ASSERT_EQ(s21_l1.size(), 4);
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  ASSERT_EQ(sfleta_l1.size(), 4);
 }
 
 TEST(list_CapacityTests, max_size) {
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  ASSERT_EQ(s21_l1.max_size(), 384307168202282325);
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  ASSERT_EQ(sfleta_l1.max_size(), 384307168202282325);
 
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
-  ASSERT_EQ(s21_l2.max_size(), 384307168202282325);
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
+  ASSERT_EQ(sfleta_l2.max_size(), 384307168202282325);
 
-  s21::list<char> s21_l3{'1', '2', '3', '4'};
-  ASSERT_EQ(s21_l3.max_size(), 384307168202282325);
+  s21::list<char> sfleta_l3{'1', '2', '3', '4'};
+  ASSERT_EQ(sfleta_l3.max_size(), 384307168202282325);
 
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
-  ASSERT_EQ(s21_l4.max_size(), 192153584101141162);
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
+  ASSERT_EQ(sfleta_l4.max_size(), 192153584101141162);
 }
 
 TEST(list_ModifiersTests, push_front) {
   std::list<int> std_l0{1};
-  s21::list<int> s21_l0;
-  s21_l0.push_front(1);
-  ASSERT_TRUE(lists_eq(s21_l0, std_l0));
+  s21::list<int> sfleta_l0;
+  sfleta_l0.push_front(1);
+  ASSERT_TRUE(lists_eq(sfleta_l0, std_l0));
 
   std::list<int> std_l1{2, 1};
-  s21::list<int> s21_l1{1};
-  s21_l1.push_front(2);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  s21::list<int> sfleta_l1{1};
+  sfleta_l1.push_front(2);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2{2.2, 1.1};
-  s21::list<double> s21_l2{1.1};
-  s21_l2.push_front(2.2);
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  s21::list<double> sfleta_l2{1.1};
+  sfleta_l2.push_front(2.2);
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3{'2', '1'};
-  s21::list<char> s21_l3{'1'};
-  s21_l3.push_front('2');
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  s21::list<char> sfleta_l3{'1'};
+  sfleta_l3.push_front('2');
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4{"two", "one"};
-  s21::list<std::string> s21_l4{"one"};
-  s21_l4.push_front("two");
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  s21::list<std::string> sfleta_l4{"one"};
+  sfleta_l4.push_front("two");
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ModifiersTests, push_back) {
   std::list<int> std_l0{1};
-  s21::list<int> s21_l0;
-  s21_l0.push_back(1);
-  ASSERT_TRUE(lists_eq(s21_l0, std_l0));
+  s21::list<int> sfleta_l0;
+  sfleta_l0.push_back(1);
+  ASSERT_TRUE(lists_eq(sfleta_l0, std_l0));
 
   std::list<int> std_l1{2, 1, 3};
-  s21::list<int> s21_l1{2, 1};
-  s21_l1.push_back(3);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  s21::list<int> sfleta_l1{2, 1};
+  sfleta_l1.push_back(3);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2{2.2, 1.1, 3.3};
-  s21::list<double> s21_l2{2.2, 1.1};
-  s21_l2.push_back(3.3);
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  s21::list<double> sfleta_l2{2.2, 1.1};
+  sfleta_l2.push_back(3.3);
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3{'2', '1', '3'};
-  s21::list<char> s21_l3{'2', '1'};
-  s21_l3.push_back('3');
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  s21::list<char> sfleta_l3{'2', '1'};
+  sfleta_l3.push_back('3');
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4{"two", "one", "three"};
-  s21::list<std::string> s21_l4{"two", "one"};
-  s21_l4.push_back("three");
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  s21::list<std::string> sfleta_l4{"two", "one"};
+  sfleta_l4.push_back("three");
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ModifiersTests, pop_front) {
   std::list<int> std_l0;
-  s21::list<int> s21_l0{1};
-  s21_l0.pop_front();
-  ASSERT_TRUE(lists_eq(s21_l0, std_l0));
+  s21::list<int> sfleta_l0{1};
+  sfleta_l0.pop_front();
+  ASSERT_TRUE(lists_eq(sfleta_l0, std_l0));
 
   std::list<int> std_l1{1, 3};
-  s21::list<int> s21_l1{2, 1, 3};
-  s21_l1.pop_front();
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  s21::list<int> sfleta_l1{2, 1, 3};
+  sfleta_l1.pop_front();
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2{1.1, 3.3};
-  s21::list<double> s21_l2{2.2, 1.1, 3.3};
-  s21_l2.pop_front();
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  s21::list<double> sfleta_l2{2.2, 1.1, 3.3};
+  sfleta_l2.pop_front();
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3{'1', '3'};
-  s21::list<char> s21_l3{'2', '1', '3'};
-  s21_l3.pop_front();
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  s21::list<char> sfleta_l3{'2', '1', '3'};
+  sfleta_l3.pop_front();
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4{"one", "three"};
-  s21::list<std::string> s21_l4{"two", "one", "three"};
-  s21_l4.pop_front();
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  s21::list<std::string> sfleta_l4{"two", "one", "three"};
+  sfleta_l4.pop_front();
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ModifiersTests, pop_back) {
   std::list<int> std_l0;
-  s21::list<int> s21_l0{1};
-  s21_l0.pop_back();
-  ASSERT_TRUE(lists_eq(s21_l0, std_l0));
+  s21::list<int> sfleta_l0{1};
+  sfleta_l0.pop_back();
+  ASSERT_TRUE(lists_eq(sfleta_l0, std_l0));
 
   std::list<int> std_l1{2, 1};
-  s21::list<int> s21_l1{2, 1, 3};
-  s21_l1.pop_back();
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  s21::list<int> sfleta_l1{2, 1, 3};
+  sfleta_l1.pop_back();
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2{2.2, 1.1};
-  s21::list<double> s21_l2{2.2, 1.1, 3.3};
-  s21_l2.pop_back();
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  s21::list<double> sfleta_l2{2.2, 1.1, 3.3};
+  sfleta_l2.pop_back();
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3{'2', '1'};
-  s21::list<char> s21_l3{'2', '1', '3'};
-  s21_l3.pop_back();
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  s21::list<char> sfleta_l3{'2', '1', '3'};
+  sfleta_l3.pop_back();
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4{"two", "one"};
-  s21::list<std::string> s21_l4{"two", "one", "three"};
-  s21_l4.pop_back();
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  s21::list<std::string> sfleta_l4{"two", "one", "three"};
+  sfleta_l4.pop_back();
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ModifiersTests, clear) {
   std::list<int> std_l1;
-  s21::list<int> s21_l1{2, 1, 3};
-  s21_l1.clear();
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  s21::list<int> sfleta_l1{2, 1, 3};
+  sfleta_l1.clear();
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2;
-  s21::list<double> s21_l2{2.2, 1.1, 3.3};
-  s21_l2.clear();
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  s21::list<double> sfleta_l2{2.2, 1.1, 3.3};
+  sfleta_l2.clear();
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3;
-  s21::list<char> s21_l3{'2', '1', '3'};
-  s21_l3.clear();
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  s21::list<char> sfleta_l3{'2', '1', '3'};
+  sfleta_l3.clear();
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4;
-  s21::list<std::string> s21_l4{"two", "one", "three"};
-  s21_l4.clear();
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  s21::list<std::string> sfleta_l4{"two", "one", "three"};
+  sfleta_l4.clear();
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ModifiersTests, swap) {
   std::list<int> std_l11;
-  s21::list<int> s21_l11{2, 1, 3};
+  s21::list<int> sfleta_l11{2, 1, 3};
   std::list<int> std_l12{2, 1, 3};
-  s21::list<int> s21_l12;
-  s21_l12.swap(s21_l11);
-  ASSERT_TRUE(lists_eq(s21_l11, std_l11));
-  ASSERT_TRUE(lists_eq(s21_l12, std_l12));
+  s21::list<int> sfleta_l12;
+  sfleta_l12.swap(sfleta_l11);
+  ASSERT_TRUE(lists_eq(sfleta_l11, std_l11));
+  ASSERT_TRUE(lists_eq(sfleta_l12, std_l12));
 
   std::list<double> std_l21;
-  s21::list<double> s21_l21{2.2, 1.1, 3.3};
+  s21::list<double> sfleta_l21{2.2, 1.1, 3.3};
   std::list<double> std_l22{2.2, 1.1, 3.3};
-  s21::list<double> s21_l22;
-  s21_l22.swap(s21_l21);
-  ASSERT_TRUE(lists_eq(s21_l21, std_l21));
-  ASSERT_TRUE(lists_eq(s21_l22, std_l22));
+  s21::list<double> sfleta_l22;
+  sfleta_l22.swap(sfleta_l21);
+  ASSERT_TRUE(lists_eq(sfleta_l21, std_l21));
+  ASSERT_TRUE(lists_eq(sfleta_l22, std_l22));
 
   std::list<char> std_l31;
-  s21::list<char> s21_l31{'2', '1', '3'};
+  s21::list<char> sfleta_l31{'2', '1', '3'};
   std::list<char> std_l32{'2', '1', '3'};
-  s21::list<char> s21_l32;
-  s21_l32.swap(s21_l31);
-  ASSERT_TRUE(lists_eq(s21_l31, std_l31));
-  ASSERT_TRUE(lists_eq(s21_l32, std_l32));
+  s21::list<char> sfleta_l32;
+  sfleta_l32.swap(sfleta_l31);
+  ASSERT_TRUE(lists_eq(sfleta_l31, std_l31));
+  ASSERT_TRUE(lists_eq(sfleta_l32, std_l32));
 
   std::list<std::string> std_l41;
-  s21::list<std::string> s21_l41{"two", "one", "three"};
+  s21::list<std::string> sfleta_l41{"two", "one", "three"};
   std::list<std::string> std_l42{"two", "one", "three"};
-  s21::list<std::string> s21_l42;
-  s21_l42.swap(s21_l41);
-  ASSERT_TRUE(lists_eq(s21_l41, std_l41));
-  ASSERT_TRUE(lists_eq(s21_l42, std_l42));
+  s21::list<std::string> sfleta_l42;
+  sfleta_l42.swap(sfleta_l41);
+  ASSERT_TRUE(lists_eq(sfleta_l41, std_l41));
+  ASSERT_TRUE(lists_eq(sfleta_l42, std_l42));
 }
 
 TEST(list_ModifiersTests, reverse) {
   std::list<int> std_l1{2, 1, 3};
-  s21::list<int> s21_l1{2, 1, 3};
-  s21_l1.reverse();
-  s21_l1.reverse();
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  s21::list<int> sfleta_l1{2, 1, 3};
+  sfleta_l1.reverse();
+  sfleta_l1.reverse();
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2{2.2, 1.1, 3.3};
-  s21::list<double> s21_l2{2.2, 1.1, 3.3};
-  s21_l2.reverse();
-  s21_l2.reverse();
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  s21::list<double> sfleta_l2{2.2, 1.1, 3.3};
+  sfleta_l2.reverse();
+  sfleta_l2.reverse();
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3{'2', '1', '3'};
-  s21::list<char> s21_l3{'2', '1', '3'};
-  s21_l3.reverse();
-  s21_l3.reverse();
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  s21::list<char> sfleta_l3{'2', '1', '3'};
+  sfleta_l3.reverse();
+  sfleta_l3.reverse();
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4{"two", "one", "three"};
-  s21::list<std::string> s21_l4{"two", "one", "three"};
+  s21::list<std::string> sfleta_l4{"two", "one", "three"};
   std_l4.reverse();
-  s21_l4.reverse();
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  sfleta_l4.reverse();
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 
   std::list<int> std_l5{5, 34, 56, 2, 3};
-  s21::list<int> s21_l5{5, 34, 56, 2, 3};
+  s21::list<int> sfleta_l5{5, 34, 56, 2, 3};
   std_l5.reverse();
-  s21_l5.reverse();
-  ASSERT_TRUE(lists_eq(s21_l5, std_l5));
+  sfleta_l5.reverse();
+  ASSERT_TRUE(lists_eq(sfleta_l5, std_l5));
 
   std::list<int> std_l6{5, 34, 56, 2};
-  s21::list<int> s21_l6{5, 34, 56, 2};
+  s21::list<int> sfleta_l6{5, 34, 56, 2};
   std_l6.reverse();
-  s21_l6.reverse();
-  ASSERT_TRUE(lists_eq(s21_l6, std_l6));
+  sfleta_l6.reverse();
+  ASSERT_TRUE(lists_eq(sfleta_l6, std_l6));
 }
 
 TEST(list_ModifiersTests, operator_move) {
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  s21::list<int> s21_ml1;
-  s21_ml1 = std::move(s21_l1);
-  ASSERT_TRUE(lists_eq(s21_ml1, std_l1));
-  ASSERT_EQ(s21_l1.size(), 0);
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  s21::list<int> sfleta_ml1;
+  sfleta_ml1 = std::move(sfleta_l1);
+  ASSERT_TRUE(lists_eq(sfleta_ml1, std_l1));
+  ASSERT_EQ(sfleta_l1.size(), 0);
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_ml2;
-  s21_ml2 = std::move(s21_l2);
-  ASSERT_TRUE(lists_eq(s21_ml2, std_l2));
-  ASSERT_EQ(s21_l2.size(), 0);
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double> sfleta_ml2;
+  sfleta_ml2 = std::move(sfleta_l2);
+  ASSERT_TRUE(lists_eq(sfleta_ml2, std_l2));
+  ASSERT_EQ(sfleta_l2.size(), 0);
 
   std::list<char> std_l3{'1', '2', '3', '4'};
-  s21::list<char> s21_l3{'1', '2', '3', '4'};
-  s21::list<char> s21_ml3;
-  s21_ml3 = std::move(s21_l3);
-  ASSERT_TRUE(lists_eq(s21_ml3, std_l3));
-  ASSERT_EQ(s21_l3.size(), 0);
+  s21::list<char> sfleta_l3{'1', '2', '3', '4'};
+  s21::list<char> sfleta_ml3;
+  sfleta_ml3 = std::move(sfleta_l3);
+  ASSERT_TRUE(lists_eq(sfleta_ml3, std_l3));
+  ASSERT_EQ(sfleta_l3.size(), 0);
 
   std::list<std::string> std_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_ml4;
-  s21_ml4 = std::move(s21_l4);
-  ASSERT_TRUE(lists_eq(s21_ml4, std_l4));
-  ASSERT_EQ(s21_l3.size(), 0);
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
+  s21::list<std::string> sfleta_ml4;
+  sfleta_ml4 = std::move(sfleta_l4);
+  ASSERT_TRUE(lists_eq(sfleta_ml4, std_l4));
+  ASSERT_EQ(sfleta_l3.size(), 0);
 }
 
 TEST(list_ModifiersTests, empty) {
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  ASSERT_FALSE(s21_l1.empty());
-  s21_l1.clear();
-  ASSERT_TRUE(s21_l1.empty());
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  ASSERT_FALSE(sfleta_l1.empty());
+  sfleta_l1.clear();
+  ASSERT_TRUE(sfleta_l1.empty());
 
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
-  ASSERT_FALSE(s21_l2.empty());
-  s21_l2.clear();
-  ASSERT_TRUE(s21_l2.empty());
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
+  ASSERT_FALSE(sfleta_l2.empty());
+  sfleta_l2.clear();
+  ASSERT_TRUE(sfleta_l2.empty());
 
-  s21::list<char> s21_l3{'1', '2', '3', '4'};
-  ASSERT_FALSE(s21_l3.empty());
-  s21_l3.clear();
-  ASSERT_TRUE(s21_l3.empty());
+  s21::list<char> sfleta_l3{'1', '2', '3', '4'};
+  ASSERT_FALSE(sfleta_l3.empty());
+  sfleta_l3.clear();
+  ASSERT_TRUE(sfleta_l3.empty());
 
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
-  ASSERT_FALSE(s21_l4.empty());
-  s21_l4.clear();
-  ASSERT_TRUE(s21_l4.empty());
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
+  ASSERT_FALSE(sfleta_l4.empty());
+  sfleta_l4.clear();
+  ASSERT_TRUE(sfleta_l4.empty());
 }
 
 TEST(list_ModifiersTests, sort) {
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{4, 2, 3, 1};
-  s21_l1.sort();
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  s21::list<int> sfleta_l1{4, 2, 3, 1};
+  sfleta_l1.sort();
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{4.4, 3.3, 2.2, 1.1};
-  s21_l2.sort();
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  s21::list<double> sfleta_l2{4.4, 3.3, 2.2, 1.1};
+  sfleta_l2.sort();
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3{'1', '3', '3', '4'};
-  s21::list<char> s21_l3{'4', '1', '3', '3'};
-  s21_l3.sort();
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  s21::list<char> sfleta_l3{'4', '1', '3', '3'};
+  sfleta_l3.sort();
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4{"fourtt", "on", "three", "two"};
-  s21::list<std::string> s21_l4{"on", "two", "three", "fourtt"};
-  s21_l4.sort();
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  s21::list<std::string> sfleta_l4{"on", "two", "three", "fourtt"};
+  sfleta_l4.sort();
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ConstructorsIteratorTests, iterator) {
-  s21::list<int>::iterator s21_it1;
-  ASSERT_EQ(s21_it1.pNode_, nullptr);
+  s21::list<int>::iterator sfleta_it1;
+  ASSERT_EQ(sfleta_it1.pNode_, nullptr);
 
-  s21::Node<int> s21_n2(5);
-  s21::list<int>::iterator s21_it2(&s21_n2);
-  ASSERT_EQ(s21_it2.pNode_->data_, s21_n2.data_);
+  s21::Node<int> sfleta_n2(5);
+  s21::list<int>::iterator sfleta_it2(&sfleta_n2);
+  ASSERT_EQ(sfleta_it2.pNode_->data_, sfleta_n2.data_);
 
-  s21::list<int> s21_l3{1, 2, 3, 4};
-  s21::list<int>::iterator s21_it3(s21_l3);
-  ASSERT_EQ(s21_it3.pNode_->data_, s21_l3.front());
+  s21::list<int> sfleta_l3{1, 2, 3, 4};
+  s21::list<int>::iterator sfleta_it3(sfleta_l3);
+  ASSERT_EQ(sfleta_it3.pNode_->data_, sfleta_l3.front());
 
-  s21::list<int>::iterator s21_it4(s21_it3);
-  ASSERT_EQ(s21_it3.pNode_->data_, s21_it4.pNode_->data_);
+  s21::list<int>::iterator sfleta_it4(sfleta_it3);
+  ASSERT_EQ(sfleta_it3.pNode_->data_, sfleta_it4.pNode_->data_);
 }
 
 TEST(list_ConstructorsConstIteratorTests, const_iterator) {
-  s21::list<int>::const_iterator s21_it1;
-  ASSERT_EQ(s21_it1.pNode_, nullptr);
+  s21::list<int>::const_iterator sfleta_it1;
+  ASSERT_EQ(sfleta_it1.pNode_, nullptr);
 
-  s21::Node<int> s21_n2(5);
-  s21::list<int>::const_iterator s21_it2(&s21_n2);
-  ASSERT_EQ(s21_it2.pNode_->data_, s21_n2.data_);
+  s21::Node<int> sfleta_n2(5);
+  s21::list<int>::const_iterator sfleta_it2(&sfleta_n2);
+  ASSERT_EQ(sfleta_it2.pNode_->data_, sfleta_n2.data_);
 
-  s21::list<int> s21_l3{1, 2, 3, 4};
-  s21::list<int>::const_iterator s21_it3(s21_l3);
-  ASSERT_EQ(s21_it3.pNode_->data_, s21_l3.front());
+  s21::list<int> sfleta_l3{1, 2, 3, 4};
+  s21::list<int>::const_iterator sfleta_it3(sfleta_l3);
+  ASSERT_EQ(sfleta_it3.pNode_->data_, sfleta_l3.front());
 
-  s21::list<int>::const_iterator s21_it4(s21_it3);
-  ASSERT_EQ(s21_it3.pNode_->data_, s21_it4.pNode_->data_);
+  s21::list<int>::const_iterator sfleta_it4(sfleta_it3);
+  ASSERT_EQ(sfleta_it3.pNode_->data_, sfleta_it4.pNode_->data_);
 }
 
 TEST(list_OperatorsIteratorTests, operators_iterator) {
-  s21::list<int> s21_l1{1, 2, 3, 4};
-  s21::list<int>::iterator s21_it1(s21_l1);
-  ASSERT_EQ(*s21_it1, 1);
-  ++s21_it1;
-  ++s21_it1;
-  ASSERT_EQ(*s21_it1, 3);
-  --s21_it1;
-  ASSERT_EQ(*s21_it1, 2);
-  s21::list<int>::iterator s21_it2;
-  s21_it2 = s21_it1;
-  ASSERT_EQ(*s21_it1, *s21_it2);
-  ASSERT_FALSE(s21_it1 != s21_it2);
-  ++s21_it2;
-  ASSERT_TRUE(s21_it1 != s21_it2);
-  ASSERT_FALSE(s21_it1 == s21_it2);
-  --s21_it2;
-  ASSERT_TRUE(s21_it1 == s21_it2);
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
+  s21::list<int>::iterator sfleta_it1(sfleta_l1);
+  ASSERT_EQ(*sfleta_it1, 1);
+  ++sfleta_it1;
+  ++sfleta_it1;
+  ASSERT_EQ(*sfleta_it1, 3);
+  --sfleta_it1;
+  ASSERT_EQ(*sfleta_it1, 2);
+  s21::list<int>::iterator sfleta_it2;
+  sfleta_it2 = sfleta_it1;
+  ASSERT_EQ(*sfleta_it1, *sfleta_it2);
+  ASSERT_FALSE(sfleta_it1 != sfleta_it2);
+  ++sfleta_it2;
+  ASSERT_TRUE(sfleta_it1 != sfleta_it2);
+  ASSERT_FALSE(sfleta_it1 == sfleta_it2);
+  --sfleta_it2;
+  ASSERT_TRUE(sfleta_it1 == sfleta_it2);
 
-  s21::list<int>::const_iterator s21_it3(s21_l1);
-  ASSERT_EQ(*s21_it3, 1);
+  s21::list<int>::const_iterator sfleta_it3(sfleta_l1);
+  ASSERT_EQ(*sfleta_it3, 1);
 }
 
 TEST(list_ModifiersTests, begin) {
   std::list<int> std_l0;
-  s21::list<int> s21_l0;
+  s21::list<int> sfleta_l0;
   std::list<int>::iterator std_it0 = std_l0.begin();
-  s21::list<int>::iterator s21_it0 = s21_l0.begin();
-  ASSERT_TRUE(*std_it0 == *s21_it0);
+  s21::list<int>::iterator sfleta_it0 = sfleta_l0.begin();
+  ASSERT_TRUE(*std_it0 == *sfleta_it0);
 
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{1, 2, 3, 4};
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
   std::list<int>::iterator std_it1 = std_l1.begin();
-  s21::list<int>::iterator s21_it1 = s21_l1.begin();
-  ASSERT_TRUE(*std_it1 == *s21_it1);
+  s21::list<int>::iterator sfleta_it1 = sfleta_l1.begin();
+  ASSERT_TRUE(*std_it1 == *sfleta_it1);
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
   std::list<double>::iterator std_it2 = std_l2.begin();
-  s21::list<double>::iterator s21_it2 = s21_l2.begin();
-  ASSERT_TRUE(*std_it2 == *s21_it2);
+  s21::list<double>::iterator sfleta_it2 = sfleta_l2.begin();
+  ASSERT_TRUE(*std_it2 == *sfleta_it2);
 
   std::list<char> std_l3{'1', '3', '3', '4'};
-  s21::list<char> s21_l3{'1', '3', '3', '4'};
+  s21::list<char> sfleta_l3{'1', '3', '3', '4'};
   std::list<char>::iterator std_it3 = std_l3.begin();
-  s21::list<char>::iterator s21_it3 = s21_l3.begin();
-  ASSERT_TRUE(*std_it3 == *s21_it3);
+  s21::list<char>::iterator sfleta_it3 = sfleta_l3.begin();
+  ASSERT_TRUE(*std_it3 == *sfleta_it3);
 
   std::list<std::string> std_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
   std::list<std::string>::iterator std_it4 = std_l4.begin();
-  s21::list<std::string>::iterator s21_it4 = s21_l4.begin();
-  ASSERT_TRUE(*std_it4 == *s21_it4);
+  s21::list<std::string>::iterator sfleta_it4 = sfleta_l4.begin();
+  ASSERT_TRUE(*std_it4 == *sfleta_it4);
 }
 
 TEST(list_ModifiersTests, end) {
   std::list<int> std_l0;
-  s21::list<int> s21_l0;
+  s21::list<int> sfleta_l0;
   std::list<int>::iterator std_it0 = std_l0.end();
-  s21::list<int>::iterator s21_it0 = s21_l0.end();
-  ASSERT_TRUE(*std_it0 == *s21_it0);
+  s21::list<int>::iterator sfleta_it0 = sfleta_l0.end();
+  ASSERT_TRUE(*std_it0 == *sfleta_it0);
 
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{1, 2, 3, 4};
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
   std::list<int>::iterator std_it1 = ++std_l1.end();
-  s21::list<int>::iterator s21_it1 = ++s21_l1.end();
-  ASSERT_TRUE(*std_it1 == *s21_it1);
+  s21::list<int>::iterator sfleta_it1 = ++sfleta_l1.end();
+  ASSERT_TRUE(*std_it1 == *sfleta_it1);
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
   std::list<double>::iterator std_it2 = --std_l2.end();
-  s21::list<double>::iterator s21_it2 = --s21_l2.end();
-  ASSERT_TRUE(*std_it2 == *s21_it2);
+  s21::list<double>::iterator sfleta_it2 = --sfleta_l2.end();
+  ASSERT_TRUE(*std_it2 == *sfleta_it2);
 
   std::list<char> std_l3{'1', '3', '3', '4'};
-  s21::list<char> s21_l3{'1', '3', '3', '4'};
+  s21::list<char> sfleta_l3{'1', '3', '3', '4'};
   std::list<char>::iterator std_it3 = ++std_l3.end();
-  s21::list<char>::iterator s21_it3 = ++s21_l3.end();
-  ASSERT_TRUE(*std_it3 == *s21_it3);
+  s21::list<char>::iterator sfleta_it3 = ++sfleta_l3.end();
+  ASSERT_TRUE(*std_it3 == *sfleta_it3);
 
   std::list<std::string> std_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
   std::list<std::string>::iterator std_it4 = --std_l4.end();
-  s21::list<std::string>::iterator s21_it4 = --s21_l4.end();
-  ASSERT_TRUE(*std_it4 == *s21_it4);
+  s21::list<std::string>::iterator sfleta_it4 = --sfleta_l4.end();
+  ASSERT_TRUE(*std_it4 == *sfleta_it4);
 }
 
 TEST(list_ModifiersTests, cbegin) {
   std::list<int> std_l0;
-  s21::list<int> s21_l0;
+  s21::list<int> sfleta_l0;
   std::list<int>::const_iterator std_it0 = std_l0.cbegin();
-  s21::list<int>::const_iterator s21_it0 = s21_l0.cbegin();
-  ASSERT_TRUE(*std_it0 == *s21_it0);
+  s21::list<int>::const_iterator sfleta_it0 = sfleta_l0.cbegin();
+  ASSERT_TRUE(*std_it0 == *sfleta_it0);
 
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{1, 2, 3, 4};
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
   std::list<int>::const_iterator std_it1 = std_l1.cbegin();
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  ASSERT_TRUE(*std_it1 == *s21_it1);
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  ASSERT_TRUE(*std_it1 == *sfleta_it1);
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
   std::list<double>::const_iterator std_it2 = std_l2.cbegin();
-  s21::list<double>::const_iterator s21_it2 = s21_l2.cbegin();
-  ASSERT_TRUE(*std_it2 == *s21_it2);
+  s21::list<double>::const_iterator sfleta_it2 = sfleta_l2.cbegin();
+  ASSERT_TRUE(*std_it2 == *sfleta_it2);
 
   std::list<char> std_l3{'1', '3', '3', '4'};
-  s21::list<char> s21_l3{'1', '3', '3', '4'};
+  s21::list<char> sfleta_l3{'1', '3', '3', '4'};
   std::list<char>::const_iterator std_it3 = std_l3.cbegin();
-  s21::list<char>::const_iterator s21_it3 = s21_l3.cbegin();
-  ASSERT_TRUE(*std_it3 == *s21_it3);
+  s21::list<char>::const_iterator sfleta_it3 = sfleta_l3.cbegin();
+  ASSERT_TRUE(*std_it3 == *sfleta_it3);
 
   std::list<std::string> std_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
   std::list<std::string>::const_iterator std_it4 = std_l4.cbegin();
-  s21::list<std::string>::const_iterator s21_it4 = s21_l4.cbegin();
-  ASSERT_TRUE(*std_it4 == *s21_it4);
+  s21::list<std::string>::const_iterator sfleta_it4 = sfleta_l4.cbegin();
+  ASSERT_TRUE(*std_it4 == *sfleta_it4);
 }
 
 TEST(list_ModifiersTests, cend) {
   std::list<int> std_l0;
-  s21::list<int> s21_l0;
+  s21::list<int> sfleta_l0;
   std::list<int>::const_iterator std_it0 = std_l0.cend();
-  s21::list<int>::const_iterator s21_it0 = s21_l0.cend();
-  ASSERT_TRUE(*std_it0 == *s21_it0);
+  s21::list<int>::const_iterator sfleta_it0 = sfleta_l0.cend();
+  ASSERT_TRUE(*std_it0 == *sfleta_it0);
 
   std::list<int> std_l1{1, 2, 3, 4};
-  s21::list<int> s21_l1{1, 2, 3, 4};
+  s21::list<int> sfleta_l1{1, 2, 3, 4};
   std::list<int>::const_iterator std_it1 = std_l1.cend();
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cend();
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cend();
   ++std_it1;
-  ++s21_it1;
-  ASSERT_TRUE(*std_it1 == *s21_it1);
+  ++sfleta_it1;
+  ASSERT_TRUE(*std_it1 == *sfleta_it1);
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4};
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4};
   std::list<double>::const_iterator std_it2 = std_l2.cend();
-  s21::list<double>::const_iterator s21_it2 = s21_l2.cend();
+  s21::list<double>::const_iterator sfleta_it2 = sfleta_l2.cend();
   --std_it2;
-  --s21_it2;
-  ASSERT_TRUE(*std_it2 == *s21_it2);
+  --sfleta_it2;
+  ASSERT_TRUE(*std_it2 == *sfleta_it2);
 
   std::list<char> std_l3{'1', '3', '3', '4'};
-  s21::list<char> s21_l3{'1', '3', '3', '4'};
+  s21::list<char> sfleta_l3{'1', '3', '3', '4'};
   std::list<char>::const_iterator std_it3 = std_l3.cend();
-  s21::list<char>::const_iterator s21_it3 = s21_l3.cend();
+  s21::list<char>::const_iterator sfleta_it3 = sfleta_l3.cend();
   ++std_it3;
-  ++s21_it3;
-  ASSERT_TRUE(*std_it3 == *s21_it3);
+  ++sfleta_it3;
+  ASSERT_TRUE(*std_it3 == *sfleta_it3);
 
   std::list<std::string> std_l4{"one", "two", "three", "four"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four"};
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four"};
   std::list<std::string>::const_iterator std_it4 = std_l4.cend();
-  s21::list<std::string>::const_iterator s21_it4 = s21_l4.cend();
+  s21::list<std::string>::const_iterator sfleta_it4 = sfleta_l4.cend();
   --std_it4;
-  --s21_it4;
-  ASSERT_TRUE(*std_it4 == *s21_it4);
+  --sfleta_it4;
+  ASSERT_TRUE(*std_it4 == *sfleta_it4);
 }
 
 TEST(list_ModifiersTests, erase) {
   std::list<int> std_l1{1, 2, 3, 4, 5};
-  s21::list<int> s21_l1{1, 2, 3, 4, 5};
+  s21::list<int> sfleta_l1{1, 2, 3, 4, 5};
   std::list<int>::iterator std_it1 = --std_l1.end();
-  s21::list<int>::iterator s21_it1 = --s21_l1.end();
+  s21::list<int>::iterator sfleta_it1 = --sfleta_l1.end();
   std_l1.erase(std_it1);
-  s21_l1.erase(s21_it1);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.erase(sfleta_it1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
   std_it1 = std_l1.begin();
-  s21_it1 = s21_l1.begin();
+  sfleta_it1 = sfleta_l1.begin();
   std_l1.erase(std_it1);
-  s21_l1.erase(s21_it1);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.erase(sfleta_it1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
   std_it1 = std_l1.begin();
-  s21_it1 = s21_l1.begin();
+  sfleta_it1 = sfleta_l1.begin();
   ++std_it1;
-  ++s21_it1;
+  ++sfleta_it1;
   std_l1.erase(std_it1);
-  s21_l1.erase(s21_it1);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.erase(sfleta_it1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std::list<double> std_l2{1.1, 2.2, 3.3, 4.4, 5.5};
-  s21::list<double> s21_l2{1.1, 2.2, 3.3, 4.4, 5.5};
+  s21::list<double> sfleta_l2{1.1, 2.2, 3.3, 4.4, 5.5};
   std::list<double>::iterator std_it2 = --std_l2.end();
-  s21::list<double>::iterator s21_it2 = --s21_l2.end();
+  s21::list<double>::iterator sfleta_it2 = --sfleta_l2.end();
   std_l2.erase(std_it2);
-  s21_l2.erase(s21_it2);
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  sfleta_l2.erase(sfleta_it2);
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
   std_it2 = std_l2.begin();
-  s21_it2 = s21_l2.begin();
+  sfleta_it2 = sfleta_l2.begin();
   std_l2.erase(std_it2);
-  s21_l2.erase(s21_it2);
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  sfleta_l2.erase(sfleta_it2);
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
   std_it2 = std_l2.begin();
-  s21_it2 = s21_l2.begin();
+  sfleta_it2 = sfleta_l2.begin();
   ++std_it2;
-  ++s21_it2;
+  ++sfleta_it2;
   std_l2.erase(std_it2);
-  s21_l2.erase(s21_it2);
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  sfleta_l2.erase(sfleta_it2);
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 
   std::list<char> std_l3{'1', '3', '3', '4', '5'};
-  s21::list<char> s21_l3{'1', '3', '3', '4', '5'};
+  s21::list<char> sfleta_l3{'1', '3', '3', '4', '5'};
   std::list<char>::iterator std_it3 = --std_l3.end();
-  s21::list<char>::iterator s21_it3 = --s21_l3.end();
+  s21::list<char>::iterator sfleta_it3 = --sfleta_l3.end();
   std_l3.erase(std_it3);
-  s21_l3.erase(s21_it3);
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  sfleta_l3.erase(sfleta_it3);
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
   std_it3 = std_l3.begin();
-  s21_it3 = s21_l3.begin();
+  sfleta_it3 = sfleta_l3.begin();
   std_l3.erase(std_it3);
-  s21_l3.erase(s21_it3);
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  sfleta_l3.erase(sfleta_it3);
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
   std_it3 = std_l3.begin();
-  s21_it3 = s21_l3.begin();
+  sfleta_it3 = sfleta_l3.begin();
   ++std_it3;
-  ++s21_it3;
+  ++sfleta_it3;
   std_l3.erase(std_it3);
-  s21_l3.erase(s21_it3);
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  sfleta_l3.erase(sfleta_it3);
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 
   std::list<std::string> std_l4{"one", "two", "three", "four", "five"};
-  s21::list<std::string> s21_l4{"one", "two", "three", "four", "five"};
+  s21::list<std::string> sfleta_l4{"one", "two", "three", "four", "five"};
   std::list<std::string>::iterator std_it4 = --std_l4.end();
-  s21::list<std::string>::iterator s21_it4 = --s21_l4.end();
+  s21::list<std::string>::iterator sfleta_it4 = --sfleta_l4.end();
   std_l4.erase(std_it4);
-  s21_l4.erase(s21_it4);
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  sfleta_l4.erase(sfleta_it4);
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
   std_it4 = std_l4.begin();
-  s21_it4 = s21_l4.begin();
+  sfleta_it4 = sfleta_l4.begin();
   std_l4.erase(std_it4);
-  s21_l4.erase(s21_it4);
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  sfleta_l4.erase(sfleta_it4);
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
   std_it4 = std_l4.begin();
-  s21_it4 = s21_l4.begin();
+  sfleta_it4 = sfleta_l4.begin();
   ++std_it4;
-  ++s21_it4;
+  ++sfleta_it4;
   std_l4.erase(std_it4);
-  s21_l4.erase(s21_it4);
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  sfleta_l4.erase(sfleta_it4);
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ModifiersTests, unique_1) {
   std::list<int> std_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  s21::list<int> s21_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  s21::list<int> sfleta_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
   std_l1.unique();
-  s21_l1.unique();
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.unique();
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, unique_2) {
   std::list<int> std_l2{0, 0, 1, 2, 2, 3, 3};
-  s21::list<int> s21_l2{0, 0, 1, 2, 2, 3, 3};
+  s21::list<int> sfleta_l2{0, 0, 1, 2, 2, 3, 3};
   std_l2.unique();
-  s21_l2.unique();
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  sfleta_l2.unique();
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 }
 
 TEST(list_ModifiersTests, unique_3) {
   std::list<int> std_l3{0, 0, 1, 2, 2, 3, 3, 0};
-  s21::list<int> s21_l3{0, 0, 1, 2, 2, 3, 3, 0};
+  s21::list<int> sfleta_l3{0, 0, 1, 2, 2, 3, 3, 0};
   std_l3.unique();
-  s21_l3.unique();
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
+  sfleta_l3.unique();
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
 }
 
 TEST(list_ModifiersTests, unique_4) {
   std::list<int> std_l4{0, 0, 1, 2, 2, 3, 3, 2, 0};
-  s21::list<int> s21_l4{0, 0, 1, 2, 2, 3, 3, 2, 0};
+  s21::list<int> sfleta_l4{0, 0, 1, 2, 2, 3, 3, 2, 0};
   std_l4.unique();
-  s21_l4.unique();
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  sfleta_l4.unique();
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ModifiersTests, unique_5) {
   std::list<int> std_l5{0, 0, 1, 2, 2, 3, 3, 2, 0, 5, 5};
-  s21::list<int> s21_l5{0, 0, 1, 2, 2, 3, 3, 2, 0, 5, 5};
+  s21::list<int> sfleta_l5{0, 0, 1, 2, 2, 3, 3, 2, 0, 5, 5};
   std_l5.unique();
-  s21_l5.unique();
-  ASSERT_TRUE(lists_eq(s21_l5, std_l5));
+  sfleta_l5.unique();
+  ASSERT_TRUE(lists_eq(sfleta_l5, std_l5));
 }
 
 TEST(list_ModifiersTests, insert) {
   std::list<int> std_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  s21::list<int> s21_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  s21::list<int> sfleta_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
   std::list<int>::iterator std_it1 = std_l1.begin();
-  s21::list<int>::iterator s21_it1 = s21_l1.begin();
+  s21::list<int>::iterator sfleta_it1 = sfleta_l1.begin();
 
   std_l1.insert(std_it1, 100);
-  s21_l1.insert(s21_it1, 100);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 100);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   ++std_it1;
-  ++s21_it1;
+  ++sfleta_it1;
   std_l1.insert(std_it1, 99);
-  s21_l1.insert(s21_it1, 99);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 99);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   ++std_it1;
-  ++s21_it1;
+  ++sfleta_it1;
   std_l1.insert(std_it1, 89);
-  s21_l1.insert(s21_it1, 89);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 89);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std_it1 = std_l1.end();
-  s21_it1 = s21_l1.end();
+  sfleta_it1 = sfleta_l1.end();
   std_l1.insert(std_it1, 79);
-  s21_l1.insert(s21_it1, 79);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 79);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   ++std_it1;
-  ++s21_it1;
+  ++sfleta_it1;
   std_l1.insert(std_it1, 44);
-  s21_l1.insert(s21_it1, 44);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 44);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   ++std_it1;
-  ++s21_it1;
+  ++sfleta_it1;
   std_l1.insert(std_it1, 34);
-  s21_l1.insert(s21_it1, 34);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 34);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   std_l1.insert(std_it1, -26);
-  s21_l1.insert(s21_it1, -26);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, -26);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   std_l1.insert(std_it1, -16);
-  s21_l1.insert(s21_it1, -16);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, -16);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   std_l1.insert(std_it1, -13);
-  s21_l1.insert(s21_it1, -13);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, -13);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   std_l1.insert(std_it1, -3);
-  s21_l1.insert(s21_it1, -3);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, -3);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   std_l1.insert(std_it1, 0);
-  s21_l1.insert(s21_it1, 0);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 0);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std_l1.clear();
-  s21_l1.clear();
+  sfleta_l1.clear();
   std_it1 = std_l1.begin();
-  s21_it1 = s21_l1.begin();
+  sfleta_it1 = sfleta_l1.begin();
 
   std_l1.insert(std_it1, 56);
-  s21_l1.insert(s21_it1, 56);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 56);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   std_l1.clear();
-  s21_l1.clear();
+  sfleta_l1.clear();
   std_it1 = std_l1.end();
-  s21_it1 = s21_l1.end();
+  sfleta_it1 = sfleta_l1.end();
 
   std_l1.insert(std_it1, 70);
-  s21_l1.insert(s21_it1, 70);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, 70);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 
   --std_it1;
-  --s21_it1;
+  --sfleta_it1;
   std_l1.insert(std_it1, -22);
-  s21_l1.insert(s21_it1, -22);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  sfleta_l1.insert(sfleta_it1, -22);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, merge_1) {
   std::list<int> std_l1{6, 3, 9};
   std::list<int> std_l2;
-  s21::list<int> s21_l1{6, 3, 9};
-  s21::list<int> s21_l2;
+  s21::list<int> sfleta_l1{6, 3, 9};
+  s21::list<int> sfleta_l2;
   std_l2.merge(std_l1);
-  s21_l2.merge(s21_l1);
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(lists_eq(s21_l2, std_l2));
+  sfleta_l2.merge(sfleta_l1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(lists_eq(sfleta_l2, std_l2));
 }
 
 TEST(list_ModifiersTests, merge_2) {
   std::list<int> std_l3{6, 3, 9};
   std::list<int> std_l4;
-  s21::list<int> s21_l3{6, 3, 9};
-  s21::list<int> s21_l4;
+  s21::list<int> sfleta_l3{6, 3, 9};
+  s21::list<int> sfleta_l4;
   std_l3.sort();
-  s21_l3.sort();
+  sfleta_l3.sort();
   std_l4.merge(std_l3);
-  s21_l4.merge(s21_l3);
-  ASSERT_TRUE(lists_eq(s21_l3, std_l3));
-  ASSERT_TRUE(lists_eq(s21_l4, std_l4));
+  sfleta_l4.merge(sfleta_l3);
+  ASSERT_TRUE(lists_eq(sfleta_l3, std_l3));
+  ASSERT_TRUE(lists_eq(sfleta_l4, std_l4));
 }
 
 TEST(list_ModifiersTests, merge_3) {
   std::list<int> std_l5;
   std::list<int> std_l6{4, 2};
-  s21::list<int> s21_l5;
-  s21::list<int> s21_l6{4, 2};
+  s21::list<int> sfleta_l5;
+  s21::list<int> sfleta_l6{4, 2};
   std_l6.merge(std_l5);
-  s21_l6.merge(s21_l5);
-  ASSERT_TRUE(lists_eq(s21_l5, std_l5));
-  ASSERT_TRUE(lists_eq(s21_l6, std_l6));
+  sfleta_l6.merge(sfleta_l5);
+  ASSERT_TRUE(lists_eq(sfleta_l5, std_l5));
+  ASSERT_TRUE(lists_eq(sfleta_l6, std_l6));
 }
 
 TEST(list_ModifiersTests, merge_4) {
   std::list<int> std_l7;
   std::list<int> std_l8{4, 2};
-  s21::list<int> s21_l7;
-  s21::list<int> s21_l8{4, 2};
+  s21::list<int> sfleta_l7;
+  s21::list<int> sfleta_l8{4, 2};
   std_l8.sort();
-  s21_l8.sort();
+  sfleta_l8.sort();
   std_l8.merge(std_l7);
-  s21_l8.merge(s21_l7);
-  ASSERT_TRUE(lists_eq(s21_l7, std_l7));
-  ASSERT_TRUE(lists_eq(s21_l8, std_l8));
+  sfleta_l8.merge(sfleta_l7);
+  ASSERT_TRUE(lists_eq(sfleta_l7, std_l7));
+  ASSERT_TRUE(lists_eq(sfleta_l8, std_l8));
 }
 
 TEST(list_ModifiersTests, merge_5) {
   std::list<int> std_l9{9, 6, 3};
   std::list<int> std_l10{4, 2, 7};
-  s21::list<int> s21_l9{9, 6, 3};
-  s21::list<int> s21_l10{4, 2, 7};
+  s21::list<int> sfleta_l9{9, 6, 3};
+  s21::list<int> sfleta_l10{4, 2, 7};
   std_l10.merge(std_l9);
-  s21_l10.merge(s21_l9);
-  ASSERT_TRUE(lists_eq(s21_l9, std_l9));
-  ASSERT_TRUE(lists_eq(s21_l10, std_l10));
+  sfleta_l10.merge(sfleta_l9);
+  ASSERT_TRUE(lists_eq(sfleta_l9, std_l9));
+  ASSERT_TRUE(lists_eq(sfleta_l10, std_l10));
 }
 
 TEST(list_ModifiersTests, merge_6) {
   std::list<int> std_l11{9, 6, 3};
   std::list<int> std_l12{4, 2, 7};
-  s21::list<int> s21_l11{9, 6, 3};
-  s21::list<int> s21_l12{4, 2, 7};
+  s21::list<int> sfleta_l11{9, 6, 3};
+  s21::list<int> sfleta_l12{4, 2, 7};
   std_l11.sort();
-  s21_l11.sort();
+  sfleta_l11.sort();
   std_l12.sort();
-  s21_l12.sort();
+  sfleta_l12.sort();
   std_l12.merge(std_l11);
-  s21_l12.merge(s21_l11);
-  ASSERT_TRUE(lists_eq(s21_l11, std_l11));
-  ASSERT_TRUE(lists_eq(s21_l12, std_l12));
+  sfleta_l12.merge(sfleta_l11);
+  ASSERT_TRUE(lists_eq(sfleta_l11, std_l11));
+  ASSERT_TRUE(lists_eq(sfleta_l12, std_l12));
 }
 
 TEST(list_ModifiersTests, merge_7) {
   std::list<int> std_l13{-9, -6, -3};
   std::list<int> std_l14{-4, -2, -7};
-  s21::list<int> s21_l13{-9, -6, -3};
-  s21::list<int> s21_l14{-4, -2, -7};
+  s21::list<int> sfleta_l13{-9, -6, -3};
+  s21::list<int> sfleta_l14{-4, -2, -7};
   std_l14.merge(std_l13);
-  s21_l14.merge(s21_l13);
-  ASSERT_TRUE(lists_eq(s21_l13, std_l13));
-  ASSERT_TRUE(lists_eq(s21_l14, std_l14));
+  sfleta_l14.merge(sfleta_l13);
+  ASSERT_TRUE(lists_eq(sfleta_l13, std_l13));
+  ASSERT_TRUE(lists_eq(sfleta_l14, std_l14));
 }
 
 TEST(list_ModifiersTests, splice_1) {
@@ -1774,12 +1774,12 @@ TEST(list_ModifiersTests, splice_1) {
   std::list<int>::const_iterator std_it1 = std_l1.cbegin();
   std_l1.splice(std_it1, std_l2);
 
-  s21::list<int> s21_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  s21::list<int> s21_l2{9, 6, 3};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  s21_l1.splice(s21_it1, s21_l2);
+  s21::list<int> sfleta_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  s21::list<int> sfleta_l2{9, 6, 3};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  sfleta_l1.splice(sfleta_it1, sfleta_l2);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, splice_2) {
@@ -1788,12 +1788,12 @@ TEST(list_ModifiersTests, splice_2) {
   std::list<int>::const_iterator std_it1 = std_l1.cend();
   std_l1.splice(std_it1, std_l2);
 
-  s21::list<int> s21_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  s21::list<int> s21_l2{9, 6, 3};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cend();
-  s21_l1.splice(s21_it1, s21_l2);
+  s21::list<int> sfleta_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  s21::list<int> sfleta_l2{9, 6, 3};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cend();
+  sfleta_l1.splice(sfleta_it1, sfleta_l2);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, splice_3) {
@@ -1803,13 +1803,13 @@ TEST(list_ModifiersTests, splice_3) {
   --std_it1;
   std_l1.splice(std_it1, std_l2);
 
-  s21::list<int> s21_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  s21::list<int> s21_l2{9, 6, 3};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cend();
-  --s21_it1;
-  s21_l1.splice(s21_it1, s21_l2);
+  s21::list<int> sfleta_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  s21::list<int> sfleta_l2{9, 6, 3};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cend();
+  --sfleta_it1;
+  sfleta_l1.splice(sfleta_it1, sfleta_l2);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, splice_4) {
@@ -1819,13 +1819,13 @@ TEST(list_ModifiersTests, splice_4) {
   ++std_it1;
   std_l1.splice(std_it1, std_l2);
 
-  s21::list<int> s21_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  s21::list<int> s21_l2{9, 6, 3};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  ++s21_it1;
-  s21_l1.splice(s21_it1, s21_l2);
+  s21::list<int> sfleta_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  s21::list<int> sfleta_l2{9, 6, 3};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  ++sfleta_it1;
+  sfleta_l1.splice(sfleta_it1, sfleta_l2);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, splice_5) {
@@ -1835,13 +1835,13 @@ TEST(list_ModifiersTests, splice_5) {
   ++std_it1;
   std_l1.splice(std_it1, std_l2);
 
-  s21::list<int> s21_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  s21::list<int> s21_l2;
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  ++s21_it1;
-  s21_l1.splice(s21_it1, s21_l2);
+  s21::list<int> sfleta_l1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  s21::list<int> sfleta_l2;
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  ++sfleta_it1;
+  sfleta_l1.splice(sfleta_it1, sfleta_l2);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, splice_6) {
@@ -1851,13 +1851,13 @@ TEST(list_ModifiersTests, splice_6) {
   ++std_it1;
   std_l1.splice(std_it1, std_l2);
 
-  s21::list<int> s21_l1;
-  s21::list<int> s21_l2{9, 6, 3};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  ++s21_it1;
-  s21_l1.splice(s21_it1, s21_l2);
+  s21::list<int> sfleta_l1;
+  s21::list<int> sfleta_l2{9, 6, 3};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  ++sfleta_it1;
+  sfleta_l1.splice(sfleta_it1, sfleta_l2);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, emplace_1) {
@@ -1865,11 +1865,11 @@ TEST(list_ModifiersTests, emplace_1) {
   std::list<int>::const_iterator std_it1 = std_l1.cbegin();
   std_l1.emplace(std_it1);
 
-  s21::list<int> s21_l1;
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  s21_l1.emplace(s21_it1);
+  s21::list<int> sfleta_l1;
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  sfleta_l1.emplace(sfleta_it1);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
 }
 
 TEST(list_ModifiersTests, emplace_2) {
@@ -1877,12 +1877,12 @@ TEST(list_ModifiersTests, emplace_2) {
   std::list<int>::const_iterator std_it1 = std_l1.cbegin();
   std::list<int>::iterator std_r1 = std_l1.emplace(std_it1);
 
-  s21::list<int> s21_l1{9, 6, 3, 7};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1);
+  s21::list<int> sfleta_l1{9, 6, 3, 7};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_3) {
@@ -1891,13 +1891,13 @@ TEST(list_ModifiersTests, emplace_3) {
   ++std_it1;
   std::list<int>::iterator std_r1 = std_l1.emplace(std_it1);
 
-  s21::list<int> s21_l1{9, 6, 3, 7};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  ++s21_it1;
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1);
+  s21::list<int> sfleta_l1{9, 6, 3, 7};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  ++sfleta_it1;
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_4) {
@@ -1906,13 +1906,13 @@ TEST(list_ModifiersTests, emplace_4) {
   --std_it1;
   std::list<int>::iterator std_r1 = std_l1.emplace(std_it1);
 
-  s21::list<int> s21_l1{9, 6, 3, 7};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cend();
-  --s21_it1;
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1);
+  s21::list<int> sfleta_l1{9, 6, 3, 7};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cend();
+  --sfleta_it1;
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_5) {
@@ -1922,12 +1922,12 @@ TEST(list_ModifiersTests, emplace_5) {
   std_l1.emplace(std_it1, 5);
   std_r1 = std_l1.emplace(std_it1, 10);
 
-  s21::list<int> s21_l1;
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1, 5, 10);
+  s21::list<int> sfleta_l1;
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1, 5, 10);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_6) {
@@ -1937,12 +1937,12 @@ TEST(list_ModifiersTests, emplace_6) {
   std_l1.emplace(std_it1, 5);
   std_r1 = std_l1.emplace(std_it1, 10);
 
-  s21::list<int> s21_l1;
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cend();
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1, 5, 10);
+  s21::list<int> sfleta_l1;
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cend();
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1, 5, 10);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_7) {
@@ -1953,13 +1953,13 @@ TEST(list_ModifiersTests, emplace_7) {
   std_l1.emplace(std_it1, 5);
   std_r1 = std_l1.emplace(std_it1, 10);
 
-  s21::list<int> s21_l1;
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cend();
-  --s21_it1;
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1, 5, 10);
+  s21::list<int> sfleta_l1;
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cend();
+  --sfleta_it1;
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1, 5, 10);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_8) {
@@ -1969,12 +1969,12 @@ TEST(list_ModifiersTests, emplace_8) {
   std_l1.emplace(std_it1, 5);
   std_r1 = std_l1.emplace(std_it1, 10);
 
-  s21::list<int> s21_l1{9, 6, 3, 7};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1, 5, 10);
+  s21::list<int> sfleta_l1{9, 6, 3, 7};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1, 5, 10);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_9) {
@@ -1985,13 +1985,13 @@ TEST(list_ModifiersTests, emplace_9) {
   std_l1.emplace(std_it1, 5);
   std_r1 = std_l1.emplace(std_it1, 10);
 
-  s21::list<int> s21_l1{9, 6, 3, 7};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  ++s21_it1;
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1, 5, 10);
+  s21::list<int> sfleta_l1{9, 6, 3, 7};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  ++sfleta_it1;
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1, 5, 10);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_10) {
@@ -2003,13 +2003,13 @@ TEST(list_ModifiersTests, emplace_10) {
   std_l1.emplace(std_it1, 10);
   std_r1 = std_l1.emplace(std_it1, 15);
 
-  s21::list<int> s21_l1{9, 6, 3, 7};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cbegin();
-  ++s21_it1;
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1, 5, 10, 15);
+  s21::list<int> sfleta_l1{9, 6, 3, 7};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cbegin();
+  ++sfleta_it1;
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1, 5, 10, 15);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_11) {
@@ -2020,12 +2020,12 @@ TEST(list_ModifiersTests, emplace_11) {
   std_l1.emplace(std_it1, 10);
   std_r1 = std_l1.emplace(std_it1, 15);
 
-  s21::list<int> s21_l1{9, 6, 3, 7};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cend();
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1, 5, 10, 15);
+  s21::list<int> sfleta_l1{9, 6, 3, 7};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cend();
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1, 5, 10, 15);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_12) {
@@ -2037,13 +2037,13 @@ TEST(list_ModifiersTests, emplace_12) {
   std_l1.emplace(std_it1, 10);
   std_r1 = std_l1.emplace(std_it1, 15);
 
-  s21::list<int> s21_l1{9, 6, 3, 7};
-  s21::list<int>::const_iterator s21_it1 = s21_l1.cend();
-  --s21_it1;
-  s21::list<int>::iterator s21_r1 = s21_l1.emplace(s21_it1, 5, 10, 15);
+  s21::list<int> sfleta_l1{9, 6, 3, 7};
+  s21::list<int>::const_iterator sfleta_it1 = sfleta_l1.cend();
+  --sfleta_it1;
+  s21::list<int>::iterator sfleta_r1 = sfleta_l1.emplace(sfleta_it1, 5, 10, 15);
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(*std_r1 == *s21_r1);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(*std_r1 == *sfleta_r1);
 }
 
 TEST(list_ModifiersTests, emplace_back_1) {
@@ -2052,13 +2052,13 @@ TEST(list_ModifiersTests, emplace_back_1) {
   std_l1.emplace_back();
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1;
-  s21_l1.emplace_back();
-  s21_l1.emplace_back();
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1;
+  sfleta_l1.emplace_back();
+  sfleta_l1.emplace_back();
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_back_2) {
@@ -2067,13 +2067,13 @@ TEST(list_ModifiersTests, emplace_back_2) {
   std_l1.emplace_back(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1;
-  s21_l1.emplace_back(5);
-  s21_l1.emplace_back(10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1;
+  sfleta_l1.emplace_back(5);
+  sfleta_l1.emplace_back(10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_back_3) {
@@ -2082,12 +2082,12 @@ TEST(list_ModifiersTests, emplace_back_3) {
   std_l1.emplace_back(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1;
-  s21_l1.emplace_back(5, 10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1;
+  sfleta_l1.emplace_back(5, 10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_back_4) {
@@ -2096,13 +2096,13 @@ TEST(list_ModifiersTests, emplace_back_4) {
   std_l1.emplace_back(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1;
-  s21_l1.emplace_back();
-  s21_l1.emplace_back(10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1;
+  sfleta_l1.emplace_back();
+  sfleta_l1.emplace_back(10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_back_5) {
@@ -2112,13 +2112,13 @@ TEST(list_ModifiersTests, emplace_back_5) {
   std_l1.emplace_back(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1;
-  s21_l1.emplace_back();
-  s21_l1.emplace_back(5, 10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1;
+  sfleta_l1.emplace_back();
+  sfleta_l1.emplace_back(5, 10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_back_6) {
@@ -2128,14 +2128,14 @@ TEST(list_ModifiersTests, emplace_back_6) {
   std_l1.emplace_back(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1{99, 100};
-  s21_l1.emplace_back();
-  s21_l1.emplace_back(5);
-  s21_l1.emplace_back(10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1{99, 100};
+  sfleta_l1.emplace_back();
+  sfleta_l1.emplace_back(5);
+  sfleta_l1.emplace_back(10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_back_7) {
@@ -2145,13 +2145,13 @@ TEST(list_ModifiersTests, emplace_back_7) {
   std_l1.emplace_back(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1{99, 100};
-  s21_l1.emplace_back();
-  s21_l1.emplace_back(5, 10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1{99, 100};
+  sfleta_l1.emplace_back();
+  sfleta_l1.emplace_back(5, 10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_back_8) {
@@ -2160,12 +2160,12 @@ TEST(list_ModifiersTests, emplace_back_8) {
   std_l1.emplace_back(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1{99, 100};
-  s21_l1.emplace_back(5, 10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1{99, 100};
+  sfleta_l1.emplace_back(5, 10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_back_9) {
@@ -2174,13 +2174,13 @@ TEST(list_ModifiersTests, emplace_back_9) {
   std_l1.emplace_back();
   size_t std_size = std_l1.size();
 
-  s21::list<std::string> s21_l1;
-  s21_l1.emplace_back();
-  s21_l1.emplace_back();
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<std::string> sfleta_l1;
+  sfleta_l1.emplace_back();
+  sfleta_l1.emplace_back();
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_front_1) {
@@ -2189,13 +2189,13 @@ TEST(list_ModifiersTests, emplace_front_1) {
   std_l1.emplace_front();
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1;
-  s21_l1.emplace_front();
-  s21_l1.emplace_front();
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1;
+  sfleta_l1.emplace_front();
+  sfleta_l1.emplace_front();
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_front_2) {
@@ -2204,13 +2204,13 @@ TEST(list_ModifiersTests, emplace_front_2) {
   std_l1.emplace_front();
   size_t std_size = std_l1.size();
 
-  s21::list<std::string> s21_l1;
-  s21_l1.emplace_front();
-  s21_l1.emplace_front();
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<std::string> sfleta_l1;
+  sfleta_l1.emplace_front();
+  sfleta_l1.emplace_front();
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_front_3) {
@@ -2219,13 +2219,13 @@ TEST(list_ModifiersTests, emplace_front_3) {
   std_l1.emplace_front(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1;
-  s21_l1.emplace_front(5);
-  s21_l1.emplace_front(10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1;
+  sfleta_l1.emplace_front(5);
+  sfleta_l1.emplace_front(10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_front_4) {
@@ -2234,13 +2234,13 @@ TEST(list_ModifiersTests, emplace_front_4) {
   std_l1.emplace_front(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1;
-  s21_l1.emplace_front();
-  s21_l1.emplace_front(10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1;
+  sfleta_l1.emplace_front();
+  sfleta_l1.emplace_front(10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_front_5) {
@@ -2250,14 +2250,14 @@ TEST(list_ModifiersTests, emplace_front_5) {
   std_l1.emplace_front(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1{99, 100};
-  s21_l1.emplace_front();
-  s21_l1.emplace_front(5);
-  s21_l1.emplace_front(10);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1{99, 100};
+  sfleta_l1.emplace_front();
+  sfleta_l1.emplace_front(5);
+  sfleta_l1.emplace_front(10);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 
 TEST(list_ModifiersTests, emplace_front_6) {
@@ -2266,54 +2266,54 @@ TEST(list_ModifiersTests, emplace_front_6) {
   std_l1.emplace_front(10);
   size_t std_size = std_l1.size();
 
-  s21::list<int> s21_l1{99, 100};
-  s21_l1.emplace_front(10, 5);
-  s21::list<int>::size_type s21_size = std_l1.size();
+  s21::list<int> sfleta_l1{99, 100};
+  sfleta_l1.emplace_front(10, 5);
+  s21::list<int>::size_type sfleta_size = std_l1.size();
 
-  ASSERT_TRUE(lists_eq(s21_l1, std_l1));
-  ASSERT_TRUE(std_size == s21_size);
+  ASSERT_TRUE(lists_eq(sfleta_l1, std_l1));
+  ASSERT_TRUE(std_size == sfleta_size);
 }
 /* Test throw */
 /*
 TEST(list_ThrowTests, throw_1) {
-  s21::list<int>::iterator s21_it1;
-  EXPECT_THROW(*s21_it1, std::exception);
+  s21::list<int>::iterator sfleta_it1;
+  EXPECT_THROW(*sfleta_it1, std::exception);
 }
 
 TEST(list_ThrowTests, throw_2) {
-  s21::list<int>::const_iterator s21_it1;
-  EXPECT_THROW(*s21_it1, std::exception);
+  s21::list<int>::const_iterator sfleta_it1;
+  EXPECT_THROW(*sfleta_it1, std::exception);
 }
 
 TEST(list_ThrowTests, throw_3) {
-  EXPECT_THROW(s21::list<int> s21_l1(384307168202282325), std::exception);
+  EXPECT_THROW(s21::list<int> sfleta_l1(384307168202282325), std::exception);
 }
 
 TEST(list_ThrowTests, throw_4) {
-  s21::list<int> s21_l1;
-  EXPECT_THROW(s21_l1.pop_front(), std::exception);
+  s21::list<int> sfleta_l1;
+  EXPECT_THROW(sfleta_l1.pop_front(), std::exception);
 }
 
 TEST(list_ThrowTests, throw_5) {
-  s21::list<int> s21_l1;
-  EXPECT_THROW(s21_l1.pop_back(), std::exception);
+  s21::list<int> sfleta_l1;
+  EXPECT_THROW(sfleta_l1.pop_back(), std::exception);
 }
 
 TEST(list_ThrowTests, throw_6) {
-  s21::list<int> s21_l1{5, 6};
-  EXPECT_THROW(s21_l1 = std::move(s21_l1), std::exception);
+  s21::list<int> sfleta_l1{5, 6};
+  EXPECT_THROW(sfleta_l1 = std::move(sfleta_l1), std::exception);
 }
 
 TEST(list_ThrowTests, throw_7) {
-  s21::list<int> s21_l1{5, 6};
-  s21::list<int>::iterator s21_it1 = s21_l1.end();
-  EXPECT_THROW(s21_l1.erase(s21_it1), std::exception);
+  s21::list<int> sfleta_l1{5, 6};
+  s21::list<int>::iterator sfleta_it1 = sfleta_l1.end();
+  EXPECT_THROW(sfleta_l1.erase(sfleta_it1), std::exception);
 }
 
 TEST(list_ThrowTests, throw_8) {
-  s21::list<int> s21_l1{5, 6};
-  s21::list<int>::iterator s21_it1;
-  EXPECT_THROW(s21_l1.erase(s21_it1), std::exception);
+  s21::list<int> sfleta_l1{5, 6};
+  s21::list<int>::iterator sfleta_it1;
+  EXPECT_THROW(sfleta_l1.erase(sfleta_it1), std::exception);
 }
  */
 //  Set tests

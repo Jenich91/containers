@@ -1,5 +1,5 @@
-#ifndef SRC_S21_STACK_H_
-#define SRC_S21_STACK_H_
+#ifndef SRC_sfleta_STACK_H_
+#define SRC_sfleta_STACK_H_
 #include <stddef.h>
 
 #include <initializer_list>
@@ -22,5 +22,5 @@ class Stack : public LSQContainer<T> {
   const_reference top();
 };
 }  // namespace s21
-#include "s21_stack.cpp"
-#endif  // SRC_S21_STACK_H_
+#include "sfleta_stack.cpp"
+#endif  // SRC_sfleta_STACK_H_

@@ -1,6 +1,6 @@
-#ifndef SRC_S21_VECTOR_H_
-#define SRC_S21_VECTOR_H_
-#include "s21_VA_Container.h"
+#ifndef SRC_sfleta_VECTOR_H_
+#define SRC_sfleta_VECTOR_H_
+#include "sfleta_VA_Container.h"
 namespace s21 {
 template <typename T>
 class vector : public VA_Container<T> {
@@ -44,5 +44,5 @@ class vector : public VA_Container<T> {
     void emplace_back(Args&&... args);
 };
 }  // namespace s21
-#include "s21_vector.cpp"
-#endif  // SRC_S21_VECTOR_H_
+#include "sfleta_vector.cpp"
+#endif  // SRC_sfleta_VECTOR_H_

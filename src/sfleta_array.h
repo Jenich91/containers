@@ -1,6 +1,6 @@
-#ifndef SRC_S21_ARRAY_H_
-#define SRC_S21_ARRAY_H_
-#include "s21_VA_Container.h"
+#ifndef SRC_sfleta_ARRAY_H_
+#define SRC_sfleta_ARRAY_H_
+#include "sfleta_VA_Container.h"
 namespace s21 {
 template <typename T, size_t N>
 class array : public VA_Container<T> {
@@ -33,5 +33,5 @@ class array : public VA_Container<T> {
     size_type size() const override { return N; }
 };
 }  // namespace s21
-#include "s21_array.cpp"
-#endif  // SRC_S21_ARRAY_H_
+#include "sfleta_array.cpp"
+#endif  // SRC_sfleta_ARRAY_H_

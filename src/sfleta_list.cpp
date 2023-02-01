@@ -2,7 +2,7 @@ namespace s21 {
 template <typename T>
 typename list<T>::reference list<T>::iterator::operator*() {
   if (pNode_ == nullptr)
-    throw std::logic_error("error s21_operator*(): iterator is empty");
+    throw std::logic_error("error sfleta_operator*(): iterator is empty");
 
   return pNode_->data_;
 }
@@ -44,7 +44,7 @@ bool list<T>::listIterator::operator!=(const listIterator &other) const {
 template <typename T>
 typename list<T>::const_reference list<T>::const_iterator::operator*() {
   if (this->pNode_ == nullptr)
-    throw std::logic_error("error s21_operator*(): iterator is empty");
+    throw std::logic_error("error sfleta_operator*(): iterator is empty");
 
   return this->pNode_->data_;
 }
@@ -57,7 +57,7 @@ list<T>::list() : LSQContainer<T>() {
 template <typename T>
 list<T>::list(size_type n) : list() {
   if (n >= max_size()) {
-    throw std::out_of_range("error s21_list(size_type n): over maximum size");
+    throw std::out_of_range("error sfleta_list(size_type n): over maximum size");
   }
   for (size_type i = 0; i < n; ++i) {
     Node<T> *tmp = new Node<T>();
@@ -159,7 +159,7 @@ void list<T>::push_front(const_reference value) {
 template <typename T>
 void list<T>::pop_front() {
   if (this->head_ == nullptr) {
-    throw std::range_error("error s21_pop_front(): the list is empty");
+    throw std::range_error("error sfleta_pop_front(): the list is empty");
   }
   Node<T> *tmp = this->head_;
   if (this->head_->pNext_ != p_after_tail_) {
@@ -195,7 +195,7 @@ void list<T>::push_back(const_reference value) {
 template <typename T>
 void list<T>::pop_back() {
   if (this->tail_ == nullptr) {
-    throw std::range_error("error s21_pop_back(): the list is empty");
+    throw std::range_error("error sfleta_pop_back(): the list is empty");
   }
   Node<T> *tmp = this->tail_;
   if (this->tail_->pPrev_ != p_after_tail_) {
@@ -244,7 +244,7 @@ void list<T>::reverse() {
 template <typename T>
 list<T> &list<T>::operator=(list<T> &&l) {
   if (this == &l)
-    throw std::invalid_argument("error s21_operator=: moving object to itself");
+    throw std::invalid_argument("error sfleta_operator=: moving object to itself");
 
   if (!this->empty()) {
     this->clear();
